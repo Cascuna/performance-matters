@@ -6,8 +6,17 @@
 
     <link rel="stylesheet" href="/assets/css/src/docs.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
     <link rel="stylesheet" href="/dist/css/bootstrap.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
-    <!-- <link rel="stylesheet" href="/dist/css/fonts.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript> -->
+   <style>
+   .html {
+    font-family: 'source_sans_pro', sans-serif;
+   }
+   </style>
    
+    <script>
+const sourceSansLight=new FontFace('source_sans_pro','url(/dist/fonts/sourcesanspro-light.woff2), url(/dist/fonts/sourcesanspro-light.woff)',{weight:300,style:'normal'});document.fonts.add(sourceSansLight),sourceSansLight.load();const sourceSansRegular=new FontFace('source_sans_pro','url(/dist/fonts/sourcesanspro-regular.woff2), url(/dist/fonts/sourcesanspro-regular.woff)',{weight:400,style:'normal'});document.fonts.add(sourceSansRegular),sourceSansRegular.load();const sourceSansIt=new FontFace('source_sans_pro','url(/dist/fonts/sourcesanspro-it.woff2), url(/dist/fonts/sourcesanspro-it.woff)',{weight:400,style:'italic'});document.fonts.add(sourceSansIt),sourceSansIt.load();const sourceSansLightIt=new FontFace('source_sans_pro','url(/dist/fonts/sourcesanspro-lightit.woff2), url(/dist/fonts/sourcesanspro-lightit.woff)',{weight:300,style:'italic'});document.fonts.add(sourceSansLightIt),sourceSansLightIt.load(),document.fonts.ready.then(a=>{console.log(a.size,'FontFaces loaded.'),document.body.classList.add('html')});
+
+
+    </script>
  
     {% block head_critical_css %} {% endblock %}
     {% block head_extra %}{% endblock %}
