@@ -17,7 +17,8 @@ Statistics:
 * docs.min.css 3.27s
 > First render 6.87s
 
-So, minifying the CSS had a positive impact on both the overall rendering as the initial render  
+minifying the CSS had a noticeable positive impact on both the overall rendering as the initial render.
+Consider using something like https://www.npmjs.com/package/uglifycss for node projects to automate this process.
 
 ## Step 2: Minifying images
 Tool used to minify: https://tinypng.com/
@@ -39,11 +40,14 @@ Statistics:
 * expo-newsweek.jpg 2.11s
 > First render 6.83s
 Total time: 22.18s  
-This one i don't fully understand, even though the image times didn't go down drastically, the total time did. The render time also slightly improved. Not that relevant for the first render.
+This one i don't fully understand, even though the image times didn't go down drastically, the total time did. The render time also slightly improved, but without a big impact. 
+
+In the future for node projects, a package like https://www.npmjs.com/package/image-min could be relevant to automate the process. 
 
 
 ## Step 3: Minify javascript
 Tool used to minify: https://jscompress.com/  
+
 ['Javascript'](auditimg/before-js-minifying.png)
 Statistics:
 * bootstrap.js 2.02s 68.1KB
@@ -77,3 +81,11 @@ HTML became 16.0kb, and took a total of 2.31s to load. The first render shot up,
 total time 17.37s
 
 Used a trick   `<link rel="stylesheet" href="/dist/css/fonts.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>` to load the css without it being render blocking. In this demo the loading of the css might still be slow for subpages, as caching is something that is done server side, and seems out of scope for this assignment. 
+
+Consider using something like https://github.com/addyosmani/critical to semi-automate this process. 
+
+## Step 5: deffering Javascript
+I noticed that the javascript wasn't being deffered. It wasn't parsing blocking but it wouldn't hurt to deffer it anyways.
+!['before deffering javascript'](auditimg/before-deffering-javascript.png)
+
+!['After deffering javascript'](auditimg/after-deffering-javascript.png)
