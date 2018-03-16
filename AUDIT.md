@@ -31,8 +31,7 @@ Statistics:
 > First render 6.87s
 Total time: 30.34s  
 
-![after-minifyin-img]
-(auditimg/b4-images.png)
+![after-minifyin-img](auditimg/b4-images.png)
 Statistics:
 * expo-lyft.jpg 2.11s
 * expo-vogue.jpg 2.11s
@@ -43,6 +42,21 @@ Total time: 22.18s
 This one i don't fully understand, even though the image times didn't go down drastically, the total time did. The render time also slightly improved, but without a big impact. 
 
 In the future for node projects, a package like https://www.npmjs.com/package/image-min could be relevant to automate the process. 
+
+## Step 3: Minify javascript
+Tool used to minify: https://jscompress.com/  
+!['Javascript'](auditimg/before-js-minifying.png)
+Statistics:
+* bootstrap.js 2.02s 68.1KB
+* ie10-viewport-bug-workaround.js 2.08s 641B
+> First render 6.81s
+Total time 22.18s
+
+!['javascript-minifying'](auditimg/after-js-minifying.png)
+* bootstrap.js 2.02s 36.0KB
+* ie10-viewport-bug-workaround.js 2.08s 0B
+> First render 6.82s
+Total time 21.76s 
 
 
 ## Step 3: Minify javascript
@@ -90,7 +104,7 @@ I noticed that the javascript wasn't being deffered. It wasn't parsing blocking 
 
 !['After deffering javascript'](auditimg/after-deffering-javascript.png)
 
-What's really interesting to note is that the load time noteablly degraded for all the files, even jquery, which I didn't even defer. 
+What's really interesting to note is that the load time noteablly increased for all the files, even jquery, which I didn't even defer. 
 It also slowed the dom loading down by 4 seconds, which seems problematic. So i wouldn't recommend it in this case.
 
 
@@ -103,3 +117,4 @@ Technique used: https://medium.com/@matuzo/getting-started-with-css-font-loading
 !['After loading fonts'](auditimg/fonts-after-loading.png)
 
 Even though the loading of the fonts now start earlier, the font is still way too big to be reasonable to use in it's current state. Alternatives would be to look at the google api https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Open+Sans, use a system font or depend on server caching, but i wouldn't suggest using it in it's current state. 
+
