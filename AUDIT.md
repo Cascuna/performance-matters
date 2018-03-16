@@ -30,8 +30,7 @@ Statistics:
 > First render 6.87s
 Total time: 30.34s  
 
-![after-minifyin-img]
-(auditimg/b4-images.png)
+![after-minifyin-img](auditimg/b4-images.png)
 Statistics:
 * expo-lyft.jpg 2.11s
 * expo-vogue.jpg 2.11s
@@ -40,6 +39,21 @@ Statistics:
 > First render 6.83s
 Total time: 22.18s  
 This one i don't fully understand, even though the image times didn't go down drastically, the total time did. The render time also slightly improved. Not that relevant for the first render.
+
+## Step 3: Minify javascript
+Tool used to minify: https://jscompress.com/  
+!['Javascript'](auditimg/before-js-minifying.png)
+Statistics:
+* bootstrap.js 2.02s 68.1KB
+* ie10-viewport-bug-workaround.js 2.08s 641B
+> First render 6.81s
+Total time 22.18s
+
+!['javascript-minifying'](auditimg/after-js-minifying.png)
+* bootstrap.js 2.02s 36.0KB
+* ie10-viewport-bug-workaround.js 2.08s 0B
+> First render 6.82s
+Total time 21.76s 
 
 
 ## Step 3: Minify javascript
@@ -77,3 +91,4 @@ HTML became 16.0kb, and took a total of 2.31s to load. The first render shot up,
 total time 17.37s
 
 Used a trick   `<link rel="stylesheet" href="/dist/css/fonts.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>` to load the css without it being render blocking. Also enabled caching to further improve the first paint on different pages aswell.
+
