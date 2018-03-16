@@ -3,10 +3,31 @@
 <head>
     {% include './app-meta.html' %}
 
-    <link href="/dist/css/fonts.min.css" rel="stylesheet">
-    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/src/docs.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/assets/css/src/docs.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
+    <link rel="stylesheet" href="/dist/css/bootstrap.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
+    <link rel="stylesheet" href="/dist/css/fonts.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
+   
+    <script>
+    var font = new FontFace("'source_sans_pro", "url(/dist/fonts/sourcesanspro-regular.woff2)", {
+    style: 'normal', unicodeRange: 'U+000-5FF', weight: '400'
+    });
+
+    font.load(); // don't wait for render tree, initiate immediate fetch!
+
+    font.ready().then(function() {
+    // apply the font (which may rerender text and cause a page reflow)
+    // once the font has finished downloading
+    document.fonts.add(font);
+    document.body.style.fontFamily = "Awesome Font, serif";
+
+    // // OR... by default content is hidden, and rendered once font is available
+    // var content = document.getElementById("content");
+    // content.style.visibility = "visible";
+
+    // OR... apply own render strategy here... 
+    });</script>
+    {% block head_critical_css %} {% endblock %}
     {% block head_extra %}{% endblock %}
 </head>
 
@@ -14,10 +35,10 @@
 
     {% block body %}{% endblock %}
 
-    <script src="/assets/js/vendor/jquery.min.js"></script>
-    <script src="/dist/js/bootstrap.min.js"></script>
-    <script src="/assets/js/docs.min.js"></script>
-    <script src="/assets/js/ie10-viewport-bug-workaround.min.js"></script>
+    <script async src="/assets/js/vendor/jquery.min.js"></script>
+    <script async src="/dist/js/bootstrap.min.js"></script>
+    <script async src="/assets/js/docs.min.js"></script>
+    <script async src="/assets/js/ie10-viewport-bug-workaround.min.js"></script>
     {% block scripts_extra %}{% endblock %}
 </body>
 </html>
