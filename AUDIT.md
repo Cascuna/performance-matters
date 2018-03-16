@@ -72,6 +72,8 @@ Statistics:
 Total time 22.18s
 
 !['aftercritical css'](auditimg/after-critical-css.png)
-HTML became 16.0kb, and took a total of 2.31s to load. The first render shot up, making the perceived render 'instant'. The html file however, is above the recommended 14kb so it needs 2 tcp cycles, but this seems worth it looking at the results :)
+HTML became 16.0kb, and took a total of 2.31s to load. The first render shot up, making the perceived render 'instant'. The html file however, is above the recommended 14kb so it needs 2 tcp cycles, but this seems worth it looking at the results 
 > First render 326ms
 total time 17.37s
+
+Used a trick   `<link rel="stylesheet" href="/dist/css/fonts.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>` to load the css without it being render blocking. Also enabled caching to further improve the first paint on different pages aswell.
