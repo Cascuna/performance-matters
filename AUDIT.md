@@ -4,6 +4,11 @@
 The aim of this Audit is to bring the start render time to 1-2 seconds as recommended by the Human-computer interaction (HCI) guidelines. We will be assuming the webpage will be served over HTTP1.1, on a ngrok server for the sake of this case. We will also focus to make increase the perceived performance within the limitations that we have. 
 Please note that we will be including the TTFB (Time Till First Byte), so the times could be increase/decrease depending on the server the project is served on.
 
+## Setup used
+Browser `Chrome 65`  
+Disabled caching to ensure a "first load" like experience  
+Throtled to **Slow 3g**
+
 ## Summary
 Of the techniques used, applying step 4 (critical CSS) combined with step 1 (minifying css) won the most first render time save by far, and was really easy to implement all things considered. Seeing as these steps could be automatised, it's absolutely worth investing times in these techniques. This is not to say that the other techniques aren't efficient to invest the time in, but if there are severe time constraints within the project, these would be my first choices to do. Please note that this can differ in different projects, as the results are dependent on the file sizes etc.
 
@@ -110,7 +115,8 @@ HTML became 16.0kb, and took a total of 2.31s to load. The first render shot up,
 > First render 326ms  
 total time 17.37s
 
-I've used a trick `<link rel="stylesheet" href="/dist/css/fonts.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>` to load the css without it being render blocking. In this demo the loading of the css might still be slow for subpages, as caching is something that is done server side, and seems out of scope for this assignment. 
+I've used a trick 
+```html <link rel="stylesheet" href="/dist/css/fonts.min.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="/dist/css/fonts.min.css"></noscript>``` [source](https://stackoverflow.com/questions/32759272/how-to-load-css-asynchronously) to load the css without it being render blocking. In this demo the loading of the css might still be slow for subpages, as caching is something that is done server side, and seems out of scope for this assignment. 
 
 Consider using something like https://github.com/addyosmani/critical to semi-automate this process. 
 
