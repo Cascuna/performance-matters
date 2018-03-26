@@ -118,10 +118,10 @@ Consider using something like https://github.com/addyosmani/critical to semi-aut
 I noticed that the javascript wasn't being deffered. It wasn't parsing blocking but it wouldn't hurt to deffer it anyways.
 
 ### Before
-!['before deffering javascript'](auditimg/before-deffering-javascript.png)
+!['before deffering javascript'](auditimg/before-deffering-javascript.PNG)
 
 ### After 
-!['After deffering javascript'](auditimg/after-deffering-javascript.png)
+!['After deffering javascript'](auditimg/after-deffering-javascript.PNG)
 
 What's really interesting to note is that the load time noteablly increased for all the files, even jquery, which I didn't even defer. 
 It also slowed the dom loading down by 4 seconds, which seems problematic. So i wouldn't recommend it in this case.
@@ -131,10 +131,10 @@ It also slowed the dom loading down by 4 seconds, which seems problematic. So i 
 Technique used: https://medium.com/@matuzo/getting-started-with-css-font-loading-e24e7ffaa791
 
 ### Before
-!['before loading fonts'](auditimg/before-loading-fonts.png)
+!['before loading fonts'](auditimg/before-loading-fonts.PNG)
 
 ### After
-!['After loading fonts'](auditimg/fonts-after-loading.png)
+!['After loading fonts'](auditimg/fonts-after-loading.PNG)
 
 Even though the loading of the fonts now start earlier, the font is still way too big to be reasonable to use in it's current state. Alternatives would be to look at the google api https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Open+Sans, use a system font or depend on server caching, but i wouldn't suggest using it in it's current state. 
 
